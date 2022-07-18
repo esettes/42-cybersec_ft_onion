@@ -1,2 +1,2 @@
-# Download nginx official docker image
-# docker pull nginx
+Download nginx official docker image
+docker pull nginx

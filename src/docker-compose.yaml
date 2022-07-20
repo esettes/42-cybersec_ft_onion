@@ -1,14 +1,23 @@
-version: '3'
+version: '3.3'
 
 services:
-  tor:
-    image: tor:v1
-    restart: always
-    ports:
-      - 127.0.0.1:9050:9050
-    volumes:
-      - tor-data:/var/lib/tor
-
+    tor:
+        container_name: tor_tontainer
+        build: ./tor/
+        restart: always
+        # ports:
+        #    - 127.0.0.1:9050:9050
+        volumes:
+            - tor-data:/var/lib/tor
+    server:
+        container_name: nginx_tontainer
+        build: ./nginx/
+        volumes:
+            - ./nginx/templates:/etc/nginx/templates
+        ports:
+            - "80:80"
+        environment:
+            - NGINX_PORT=80
 volumes:
-  tor-data:
-    driver: local
+    tor-data:
+        driver: local

@@ -17,7 +17,7 @@ build:
 run:
 	docker run -d --name ${CONT_NAME} ${APPNAME}
 
-br:	build	run
+br:	build	run	
 
 clibuild:
 	docker build -t ${CLINAME} ${CLIBUILD_DIR}
@@ -33,8 +33,6 @@ onionexec:
 cliexec:
 	docker exec -it ${CLICONT_NAME} bash
 
-all:	br	clibr
-
 list:
 	@echo "${BLUE}"
 	docker ps -a
@@ -48,9 +46,12 @@ delete:
 	docker rm ${CLICONT_NAME} ${CONT_NAME}
 	docker rmi ${APPNAME} ${CLINAME}
 
+re:	delete	all
+
 help:
 	@echo "${BLUE}GENERAL COMMANDS:\033[2;37m"
 	@echo "[make] builds main proyect and client images, and runs both containers"
 	@echo "[onionexec] and [cliexec] executes container with bash"
 	@echo "[list] shows images and all containers"
+	@echo "[re] execute 'delete' and 'make' commands"
 	@echo "[delete] stops running containers and delete them and the containers too"

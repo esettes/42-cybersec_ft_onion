@@ -5,6 +5,6 @@ RUN apk update && apk upgrade && \
 
 COPY ./src/torrc /etc/tor/torrc
 
-USER tor
+RUN adduser -S usertor
 
 CMD ["tor"]

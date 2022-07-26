@@ -9,15 +9,23 @@ services:
         #    - 127.0.0.1:9050:9050
         volumes:
             - tor-data:/var/lib/tor
+        networks:
+            - proxy-red
     server:
         container_name: nginx_tontainer
         build: ./nginx/
         volumes:
             - ./nginx/templates:/etc/nginx/templates
-        ports:
-            - "80:80"
-        environment:
-            - NGINX_PORT=80
+              # ports:
+              #- "80:80"
+        expose:
+            - "80"
+            
+        networks:
+            - proxy-red
 volumes:
     tor-data:
         driver: local
+
+networks:
+    proxy-red:

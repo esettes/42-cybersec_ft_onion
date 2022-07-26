@@ -1,0 +1,17 @@
+Include /etc/ssh/sshd_config.d/*.conf
+
+Port 4242
+PermitRootLogin no
+MaxAuthTries 2
+MaxSessions 1
+AllowUsers tonto
+
+# If you just want the PAM account and session checks to run without
+# PAM authentication, then enable this but set PasswordAuthentication
+# and ChallengeResponseAuthentication to 'no'.
+UsePAM no
+
+X11Forwarding no
+
+# override default of no subsystems
+Subsystem	sftp	/usr/lib/openssh/sftp-server

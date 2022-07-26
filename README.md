@@ -1,12 +1,38 @@
-##Ft_onion
+# ft_onion
 
-Download nginx official docker image
-docker pull nginx
+<br>
 
-`docker build -t tor:v1`
+Serves a static web page with Nginx that can be accessible with an .onion site. You can connect with the
+server with ssh.
 
-`docker-compose up -d`
+<br>
 
-`docker build -t nginx:v1`
+## Access static web site
 
-`docker-compose up -d`
+The server is dockerized and you can check the functionality with a dockerized cllient. To start run:
+
+```` 
+make
+````
+
+It builds two images, server and client, and runs its containers.
+
+<br>
+
+Now we need the .onion URL. Execute the server container and `cat` the hostname
+
+````
+make onionexec
+````
+Into container:
+
+````
+cat /var/lib/tor/my_hidden_service/hostname
+````
+## Access server with ssh
+
+````
+cat /var/lib/tor/my_other_hidden_service/hostname
+````
+
+...

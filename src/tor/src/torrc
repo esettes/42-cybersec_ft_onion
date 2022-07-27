@@ -1,5 +1,0 @@
-HiddenServiceDir /var/lib/tor/my_hidden_service/
-HiddenServicePort 80 nginx_tontainer:80
-
-HiddenServiceDir /var/lib/tor/my_other_hidden_service/
-HiddenServicePort 4242 nginx_tontainer:4242
